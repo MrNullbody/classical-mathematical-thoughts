@@ -21,6 +21,11 @@
 \fancyhead[RO,LE]{\thepage}
 \fancyhead[LO]{\ifnum\value{chapter}>0 第\thechapter 章\fi\quad\leftmark}
 \fancyhead[RE]{\rightmark}
+\newpage
+\setcounter{page}{1}
+\subfile{ch04}
 \subfile{ch05}
 \subfile{ch06}
+\bibliographystyle{unsrt}
+\bibliography{sitations}
 \end{document}
