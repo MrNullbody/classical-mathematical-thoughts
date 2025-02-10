@@ -1,0 +1,10 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{main}
+\LoadClass{book}
+\RequirePackage{amssymb,amsmath,amsthm}
+\RequirePackage{hyperref}
+\RequirePackage{tikz,pgfplots}
+\RequirePackage{geometry}
+\RequirePackage[fontset=none]{ctex}
+\RequirePackage{titlesec}
+\RequirePackage{fancyhdr}

@@ -1,0 +1,26 @@
+\documentclass{main}
+\usepackage{subfiles}
+\title{\Huge\bfseries 经典王志超技巧}
+\author{Anthropos Anonumos}
+\date{\today}
+\setCJKmainfont[Path=./fonts/,ItalicFont=simkai,BoldFont=simhei]{simsun}
+\geometry{a4paper,scale=0.7,marginparwidth=3cm,headheight=10mm}
+\pgfplotsset{compat=1.18}
+\theoremstyle{definition}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命题}
+\newtheorem{lemma}[theorem]{引理}
+\newcommand{\dd}{\mathrm{d}}
+\titleformat{\chapter}{\Huge\bfseries}{\huge\bfseries 第\thechapter 章}{0pt}{\vskip 20pt}
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\begin{document}
+\pagestyle{fancy}
+\maketitle
+\tableofcontents
+\fancyhf{}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[LO]{\ifnum\value{chapter}>0 第\thechapter 章\fi\quad\leftmark}
+\fancyhead[RE]{\rightmark}
+\subfile{ch05}
+\subfile{ch06}
+\end{document}
