@@ -1,0 +1,201 @@
+\documentclass[./main.tex]{subfiles}
+\begin{document}
+\chapter{直线与平面}
+\section{本章概要}
+读完第一章, 我们确信读者已经可以计算向量的内积、外积、混合积, 从而计算出各种几何度量, 然而, 只用几何的观点去研究向量代数将体现出极大的片面性, 我们需要对向量做某种意义上的标准化处理, 一个最简单的方法就是取定一组基$(\mathbf{e}_1,\mathbf{e}_2,\mathbf{e}_3)$, 并将向量$\mathbf{v}=x\mathbf{e}_1+y\mathbf{e}_2+z\mathbf{e}_3$对应于$\mathbb{R}^3$中的$(x,y,z)$, 我们会有两个节外生枝的疑问\marginpar{\footnotesize ---疑问一是: 我们最终选择了标准正交基, 归根到底, 它有什么好处呢? ---疑问二是: 如果我们反常地不取标准正交基, 而只是采用一些线性无关的单位向量做基, 情况会变得如何? 在什么情况下这将成为一种高效的简化? }, 读者可以作为茶余饭后的消遣活动来思考它们, 接下来, 我们简单概括本章的内容如下: 
+\begin{enumerate}
+\item 建立空间直角坐标系, 完成对向量的标准化; 
+\item 从向量位置关系的观点出发分析直线与平面 (用向量代表直线、平面的方向与它们的\textbf{相对位置}) ; 
+\item 用方程描述 (刻画) 几何对象, 即点、线、面; 
+\item \textbf{研究线与线、线与面、面与面的位置关系, 计算几何度量}, 即距离、夹角; 
+\item \textbf{求两条异面直线的公垂线方程}; 
+\item 平面束及其参数化, 等价关系和等价类; 
+\item \textbf{两个单参数直线族编织曲面的例子, 该如何建立一个好的坐标系}.
+\end{enumerate}
+
+\section{几何对象与度量}
+\begin{itemize}
+    \item 三维欧氏空间$\mathbb{E}^3$中的几何对象: 点、线、面; 
+    \item 两点决定一条直线, 三点决定一个平面, 两线决定一个平面; 
+    \item 点与点之间、点与线之间、点与面之间有\textbf{距离}; 
+    \item 线与线之间、线与面之间、面与面之间有\textbf{距离}和\textbf{夹角}; 
+    \item 计算这些几何度量是我们的重要目标之一.
+\end{itemize}
+
+\section{空间直角坐标系}
+\begin{itemize}
+    \item 坐标与向量的对应; 
+    \item 定比分点公式; 
+    \item 用坐标表示向量内积、外积、混合积.\\注: 设$\mathbf{a}=(a_1,a_2,a_3),\mathbf{b}=(b_1,b_2,b_3)$, 推荐用下面的方法记忆外积的表达式: $$\mathbf{a}\times \mathbf{b}=\begin{vmatrix}
+    a_1 & a_2 & a_3\\
+    b_1 & b_2 & b_3\\
+    \mathbf{e}_1 & \mathbf{e}_2 & \mathbf{e}_3
+    \end{vmatrix}.$$
+    \item \textbf{一个概念: 方向余弦}.
+\end{itemize}
+
+\section{直线与平面方程}
+我们用$l$表示与直线有关的观点, 用$p$表示与平面有关的观点.
+\begin{itemize}
+    \item  ($l$) 一个点$P$的坐标和一个方向向量$\mathbf{v}$唯一确定了以$\mathbf{v}$为方向向量且通过$P$的直线; 
+    \item  ($l$) 上面的观点自然地给出了\textbf{直线的参数化方程}和\textbf{点向式方程}.
+    \item  ($l$) 我们很快会有\textbf{直线的普通方程}.
+    \item  ($p$) 不共线的三点$A,B,C$确定一张平面, 或者说两个共起点的不平行的非零向量$\overrightarrow{AB},\overrightarrow{AC}$确定一张平面, 这一观点给出了\textbf{平面的参数化方程}; 
+    \item  ($p$) 把垂直于平面$\Pi$的非零向量称为平面的法向量$\mathbf{n}$, 则一个点$P$的坐标和一个法向量$\mathbf{n}$唯一确定了一张平面$$\mathbf{n}(X-P)=0.$$这就是\textbf{平面的点法式方程}.
+    \item  ($p$) 此外, 还有\textbf{平面的普通方程}和\textbf{平面的截距式方程}, 可以读出 (或一步计算出) 平面在坐标轴上的\textbf{截距}.
+    \item  ($l$) 将直线视为两个平面的交的观点给出了\textbf{直线的普通方程},
+\end{itemize}
+
+\section{位置关系}
+\begin{itemize}
+    \item 两条直线所有可能的位置关系=异面+共面=异面+平行 (包括重合) +相交.设两条直线为$L_i(t)=\mathbf{r_i}+t\mathbf{v_i}(i=1,2),\mathbf{w}$\marginpar{\footnotesize 形象地说, $\mathbf{w}$是从$L_1$走到$L_2$的道路, 在给出直线相对位置的工作中起到相当大的作用.像这样, 从一个几何对象通往另一个几何对象的向量\textbf{暂时}称为\textbf{道路向量}.}$=\mathbf{r}_2-\mathbf{r}_1.$易得各种关系的等价条件.
+    \begin{enumerate}
+        \item 两条直线的夹角 (\textbf{非钝角}) : $$\cos(\angle (\mathbf{v}_1,\mathbf{v}_2))=\frac{\mathbf{v}_1\cdot \mathbf{v}_2}{|\mathbf{v}_1||\mathbf{v}_2|}.$$
+        \item 两条直线的距离 (用投影来理解两个公式) : 
+        \begin{enumerate}
+            \item 平行直线间的距离——\textbf{道路向量在方向向量上的外投影}: $$d=\frac{|\mathbf{v}_1\times \mathbf{w}|}{|\mathbf{v}_1|}.$$
+            \item 异面直线间的距离——\textbf{道路向量在法向量上的内投影}: $$d=\frac{|(\mathbf{v}_1,\mathbf{v}_2,\mathbf{w})|}{|\mathbf{v}_1\times \mathbf{v}_2|}.$$
+            \item 注: 实际上, $b$是比$a$复杂得多的问题, 因为我们需要证明\textbf{公垂线}唯一存在以作为理论基础.有时, 我们需要确定其方程, 确定其方向$\mathbf{v}$是很容易的, 但很难找到一个在公垂线上的点.我们有如下两个方法确定公垂线方程: 
+            \begin{enumerate}
+                \item  (``交轨法'') 将公垂线视作两个柱面的交线. 当然, 在这里, 这种说法显得莫名其妙, 因为这 (以$L_i$为准线, $\mathbf{v}$为母线方向的) 两个柱面本身也是平面. 为此, 需要读者仔细体会以下的观点: 为了解决问题, 我们不是在``作平面'', 而是在``作柱面''; 
+                \item 设通过$L_1$的点$\mathbf{r}_1+t\mathbf{v}_1$且以$\mathbf{v}$为方向的直线为$L(t)$, 只需找到$t_0$使得$L(t_0)$与$L_2$相交, 即\marginpar{\footnotesize 这一步转化极为关键, 要注意到上述命题等价于新的含参道路向量、法向量、$L_2$的方向向量共面.}$$(\mathbf{w}-t_0\mathbf{v}_1,\mathbf{v}_2,\mathbf{v})=0,$$即当且仅当$$t_0=\frac{(\mathbf{w},\mathbf{v}_2,\mathbf{v})}{(\mathbf{v}_1,\mathbf{v}_2,\mathbf{v})}.$$则$L(t_0)$即为所求.
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+    \item 直线与平面所有可能的位置关系=平行 (包括退化情况) +相交.设直线 (带参数) 为$L(\mathbf{r}_1,\mathbf{v})$, 平面 (带参数) 为$\Pi(\mathbf{r}_0,\mathbf{n}).$用上述四个参数, 易得各种关系的等价条件.在此基础上, 还可得到道路向量$\mathbf{w}=\mathbf{r}_1-\mathbf{r}_0$.
+    \begin{enumerate}
+        \item 当$L$与$\Pi$平行时, 可考虑距离; 
+        \item 当$L$与$\Pi$相交时, 可考虑夹角 (\textbf{非钝角}) .
+    \end{enumerate}
+\item 平面与平面所有可能的位置关系=平行+相交.
+\begin{enumerate}
+    \item 当两个平面平行时, 可考虑距离; 
+    \item 当两个平面相交时, 可考虑夹角 (\textbf{非钝角}) ; 
+    \item 此外, 还可以定义两个半平面所夹的二面角 (\textbf{可以是钝角}, 见习题D中第5题) .
+\end{enumerate}
+\end{itemize}
+
+\section{平面束}
+\begin{itemize}
+    \item 设直线$L$为两平面$\Pi_1$与$\Pi_2$的交线, 则$$M=\{\Pi_{(\lambda,\mu)}:=\lambda \Pi_1+\mu \Pi_2 \mid (\lambda,\mu)\in \mathbb{R}^2\backslash \{(0,0)\}\}$$称为通过$L$的平面束.
+    \item 注意到对任意非零常数$t$, $\Pi_{(\lambda,\mu)}=\Pi_{t(\lambda,\mu)}$, 为此我们引入\textbf{等价关系}和\textbf{等价类}的概念, 在之后的射影几何部分会仔细研究, 但现在, 我们只讨论到$M$与$S:=\mathbb{R}^2-(0,0)/\sim$一一对应.
+    \item 最后, 若沿着直线方向``看''通过这条直线的平面束, 则平面束变成了``直线''束, 请读者在第五章重新想起来这件事.
+\end{itemize}
+
+\section{单参数直线族编织曲面的例子}
+具体的讨论将在第三章展开, 这里我们仅给出一些思想, 这些思想指导我们建立一个尽量好的坐标系, 这件事在几何学中非常重要.
+\begin{itemize}
+    \item 要点: 建立好的坐标系！第一个例子中, 选取$z$轴和$x$轴的方式几乎是``唯一确定''的: 选好$z$轴简化了旋转过程所带来的复杂度; 选好$x$轴简化了$L_2$的方程, 便于入手计算.第二个例子中, 选好$x$轴简化了$L_1$的方程, 选好$y$轴简化了$L_2$的方程.
+    \item 总结: 建立好的坐标系的核心原则是简化, 优先注意动态的信息, 因为它们往往会使问题更复杂, 应考虑对动态过程中不变的几何量的简化的可行性; 其次, 考虑某个不那么显著的几何量能否被进一步简化.此外, 单论与此两例相似的问题, 将公垂线引入并将其作为一轴、将某条不变的直线作为另一轴是值得尝试的.
+\end{itemize}
+
+
+\section{问题}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\subsection*{习题A}
+\begin{enumerate}
+    \item 考虑如下问题\marginpar{\footnotesize 像这样, 当一系列问题被列出来时, 我们希望读者能够快速地浏览一遍并尽可能迅速地给出算法.}: 
+\begin{itemize}
+    \item 求某点关于点、平面、直线的对称点的坐标; 
+    \item 求定比分点坐标; 
+    \item 求以向量$\mathbf{a},\mathbf{b},\mathbf{c}$为邻边的平行六面体的体积\marginpar{\footnotesize 当$\mathbf{a}=(-2,3,0),\mathbf{b}=(0,3,-1),\mathbf{c}=(1,1,1)$时, 是2022年期末考试题1 (3) , 答案是11.}; 
+    \item 求向量$\mathbf{a}$在向量$\mathbf{b}$上的\textbf{有向}投影; 
+    \item 判断三个向量$\mathbf{a},\mathbf{b},\mathbf{c}$是否共面; 
+    \item 将某向量表示为一些线性无关的向量的线性组合.
+\end{itemize}
+    \item 用内积、外积的坐标表示证明\textbf{双重外积公式}: $$(\mathbf{a}\times \mathbf{b})\times \mathbf{c}=(\mathbf{a}\cdot \mathbf{c})\mathbf{b}-(\mathbf{b}\cdot \mathbf{c})\mathbf{a}.$$
+    \item 回忆$$(\mathbf{a},\mathbf{b},\mathbf{c})=(\mathbf{b},\mathbf{c},\mathbf{a})=(\mathbf{c},\mathbf{a},\mathbf{b})=-(\mathbf{b},\mathbf{a},\mathbf{c})=-(\mathbf{c},\mathbf{b},\mathbf{a})=-(\mathbf{a},\mathbf{c},\mathbf{b})$$重新证明之. \marginpar{\footnotesize 现在, 你一定理解了本章正文的第一句话——``然而, 只用几何的观点去研究向量代数将体现出极大的片面性''.}\textbf{现在, 我们几乎可以用坐标表示证明所有向量代数的恒等式, 其中有些恒等式在几何的观点下并不容易证明.}
+    \item 在空间中以$A=(a_1,a_2,a_3),B=(b_1,b_2,b_3),C=(c_1,c_2,c_3),D=(d_1,d_2,d_3)$为顶点的四面体的体积为$$V=\pm \frac{1}{6}\begin{vmatrix}
+        1 & a_1 & a_2 & a_3\\
+        1 & b_1 & b_2 & b_3\\
+        1 & c_1 & c_2 & c_3\\
+        1 & d_1 & d_2 & d_3
+    \end{vmatrix}.$$说明正负号的含义.
+\end{enumerate}
+
+\subsection*{习题B}
+\begin{enumerate}
+    \item 求过一点$P$且与直线$L$垂直相交的直线方程 ($L$不经过$P$) .
+    \item 已知$$\frac{a}{x^2-yz}=\frac{b}{y^2-zx}=\frac{c}{z^2-xy}.$$证明: $$ax+by+cz=(a+b+c)(x+y+z).$$请思考上述结论的几何意义是什么? 
+\end{enumerate}
+
+\subsection*{习题C}
+\begin{enumerate}
+    \item 考虑如下问题: 
+\begin{itemize}
+    \item 求过直线$l_1$且与直线$l_2$平行的平面 ($l_1$与$l_2$不平行) ; 
+    \item 截距信息可以简单地理解为一个点在平面上, 故可以将混有截距信息的点面结合信息通通视为点面结合信息.
+\end{itemize} 
+\item 将直线的普通方程化为点向式方程.
+\end{enumerate}
+
+\subsection*{习题D}
+\begin{enumerate}
+    \item 给定两条异面直线$L_1$与$L_2$, 求连接$L_1$与$L_2$上点的线段的中点轨迹.
+    \item 推导点到平面的距离公式 (见例20) .
+    \item 设原点到平面$$\frac{x}{a}+\frac{y}{b}+\frac{z}{c}=1,\quad abc\neq 0$$
+的距离为$d$.求证$$\frac{1}{d^2}=\frac{1}{a^2}+\frac{1}{b^2}+\frac{1}{c^2}.$$请给上述结论一个几何上更直观一些的叙述.
+\item 设$A,B,C$分别为三个平行平面$\Pi_i:\xi x+\zeta y+\eta z +D_i=0,i=1,2,3$上的任意三点, 求$\triangle ABC$重心$G$的轨迹.
+\item  (1) 证明在空间中从一点出发的三条不共面的射线两两之间的夹角之和小于$2\pi$.\\ (2) 从点$O$出发引三条射线$l_1,l_2,l_3$, 形成三个以$l_1,l_2,l_3$为棱的二面角, 证明这三个角之和大于$\pi$.
+\end{enumerate}
+
+\subsection*{习题E}
+\begin{enumerate}
+    \item 考虑如下问题: 
+    \begin{itemize}
+        \item 求经过某直线 (可能是各种形式的方程) 且与某平面夹角为$\alpha$的平面方程; 
+        \item 求经过某直线且满足某条件的平面方程.
+    \end{itemize}
+\item 给定四张平面$\Pi_i:\xi_i x+\zeta_i y+\eta_i z +D_i=0,i=1,2,3,4$, 其中$\Pi_1$与$\Pi_2$相交于$L_1$, $\Pi_3$与$\Pi_4$相交于$L_2$.证明$L_1$与$L_2$共面当且仅当$$\begin{vmatrix}
+    \xi_1 & \zeta_1 & \eta_1 & D_1\\
+    \xi_2 & \zeta_2 & \eta_2 & D_2\\
+    \xi_3 & \zeta_3 & \eta_3 & D_3\\
+    \xi_4 & \zeta_4 & \eta_4 & D_4\\
+    \end{vmatrix}=0.$$
+\end{enumerate}
+
+\subsection*{习题F}
+\begin{enumerate}
+    \item 思考: 书上2.6节的问题该怎么建系? 
+\end{enumerate}
+
+\section{习题之解与注解}
+\subsection*{习题A}
+略.
+
+\subsection*{习题B}
+\begin{enumerate}
+    \item 略.
+    \item 考虑: $$\frac{a}{x^2-yz}=\frac{b}{y^2-zx}=\frac{c}{z^2-xy}=\frac{ax}{x^3-xyz}=\frac{by}{y^3-xyz}=\frac{cz}{z^3-xyz}$$由合比定理, 有: $$\frac{a+b+c}{x^2+y^2+z^2-xy-yz-xz}=\frac{ax+by+cz}{x^3+y^3+z^3-3xyz}.$$注意到$x^3+y^3+z^3-3xyz=(x+y+z)(x^2+y^2+z^2-xy-yz-xz)$即证.
+\end{enumerate}
+
+\subsection*{习题C}
+\begin{enumerate}
+    \item 略.
+    \item 消元.
+\end{enumerate}
+
+\subsection*{习题D}
+\begin{enumerate}
+    \item 将$L_1,L_2$参数化, 轨迹是一个平面.\marginpar{\footnotesize 这与直觉相符.首先, 在取定$L_1$上一点时, 轨迹是一条直线; 其次, 中点轨迹应被两个参数参数化.}
+    \item 见例20.
+    \item 用例20即证, 这是一类特殊四面体的几何性质.
+    \item 轨迹是一个平面$\Pi:\xi x+\zeta y+\eta z+\frac{D_1+D_2+D_3}{3}=0$.可以用参数化的方法解决这个问题, 也可以分别证明下面两件事: 
+        \begin{itemize}
+            \item 所有$G$都在$\Pi$上; 
+            \item 所有$\Pi$上的点都可以成为某个$\triangle ABC$的重心. (若不允许$\triangle ABC$是退化的, 证明这件事需要多费些力气) 
+        \end{itemize}
+    \item 记$l_i,l_j(i\neq j)$构成平面的法向量$\mathbf{n}_{ij}$ (取指向$l_1,l_2,l_3$构成的三棱锥内部的那个) , 若 (1) 已证, 对$\mathbf{n}_{12},\mathbf{n}_{23},\mathbf{n}_{13}$使用 (1) 的结论即证, 下面我们给出两种 (1) 的证明: 
+        \begin{proof} 沿\marginpar{\footnotesize 来自ideal}着三条射线的方向取三个单位向量$\mathbf{e}_1,\mathbf{e}_2,\mathbf{e}_3$并将它们平移到起点与原点$O$重合, 设它们的终点在平移后分别是$A,B,C$.作$O$在平面$ABC$上的投影$H$, 注意到$\triangle AOB$和$\triangle AHB$均为等腰三角形, 结合$AO>AH$, 有$\angle AOB<\angle AHB$, 同理有$\angle BOC<\angle BHC,\angle AOC<\angle AHC$, 三式相加即证.\end{proof}
+        \begin{proof} 沿\marginpar{\footnotesize 来自ATRENTYA}着三条射线的方向取三个单位向量$\mathbf{u},\mathbf{v},\mathbf{w}$, 我们希望$P=\langle\mathbf{u},\mathbf{v}\rangle+\langle\mathbf{v},\mathbf{w}\rangle+\langle\mathbf{u},\mathbf{w}\rangle$最大化.固定$\mathbf{u}\cdot\mathbf{w}=\cos{\langle\mathbf{u},\mathbf{w}\rangle}=c_1;\mathbf{v}\cdot\mathbf{w}=\cos{\langle\mathbf{v},\mathbf{w}\rangle}=c_2$, 希望$\mathbf{u}\cdot\mathbf{v}=\cos{\langle\mathbf{u},\mathbf{v}\rangle}$最小化.\\由双重外积公式, 有: $$\mathbf{w}\times (\mathbf{u}\times \mathbf{v})=(\mathbf{w}\cdot\mathbf{v})\mathbf{u}-(\mathbf{w}\cdot\mathbf{u})\mathbf{v}=c_2\mathbf{u}-c_1\mathbf{v}.$$两边平方: $$c_2^2+c_1^2-2c_1c_2\cdot (\mathbf{u}\cdot\mathbf{v})=|\mathbf{w}\times (\mathbf{u}\times \mathbf{v})|^2\leq |\mathbf{u}\times \mathbf{v}|^2=1-(\mathbf{u}\cdot\mathbf{v})^2.$$记$\mathbf{u}\cdot\mathbf{v}=\lambda$, 即$c_1^2+c_2^2-2c_1c_2\cdot\lambda\leq 1-\lambda^2$, 配方得$(\lambda-c_1c_2)^2\leq c_1^2c_2^2-c_1^2-c_2^2+1=(1-c_1^2)(1-c_2^2)$, 解得: $$\lambda\ge c_1c_2-\sqrt{(1-c_1^2)(1-c_2^2)}.$$且等号成立时, 有\marginpar{\footnotesize 这里不能说``当且仅当''. 实际上, 等号成立当且仅当$\mathbf{w},\mathbf{u},\mathbf{v}$共面且$\lambda-c_1c_2\leq 0$.}$\mathbf{w}$与$\mathbf{u}\times \mathbf{v}$垂直, 即$\mathbf{w},\mathbf{u},\mathbf{v}$共面.总之, 当$P$最大化时, $\mathbf{w},\mathbf{u},\mathbf{v}$共面, $P\leq 2\pi$且当三条射线不共面时等号不成立, 即证.\end{proof}
+\end{enumerate}
+
+\subsection*{习题E}
+\begin{enumerate}
+    \item 用平面束的观点.值得指出的是, 要有主动把``各种形式的直线方程''变为普通方程的意识.比如, 有时需要将直线的点向式方程的连等式``拆开''.
+    \item $L_1,L_2$共面等价于过$L_1$的平面束与过$L_2$的平面束有交, 等价于存在不为零的$(\lambda_1,\lambda_2)$, $(\lambda_3,\lambda_4)$, 使得$\lambda_1\Pi_1+\lambda_2\Pi_2=\lambda_3\Pi_3+\lambda_4\Pi_4$, 即四个行向量$(\xi_i,\zeta_i,\eta_i,D_i)(i=1,2,3,4)$线性相关, 即证.
+\end{enumerate}
+
+\subsection*{习题F}
+略.
+\end{document}
