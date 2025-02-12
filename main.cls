@@ -2,7 +2,7 @@
 \ProvidesClass{main}
 \LoadClass{book}
 \RequirePackage{amssymb,amsmath,amsthm,mathtools,yhmath}
-\RequirePackage{hyperref}
+\RequirePackage{hyperref,tocloft}
 \RequirePackage{tikz,pgfplots}
 \RequirePackage{geometry}
 \RequirePackage[fontset=none]{ctex}
