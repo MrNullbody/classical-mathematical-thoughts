@@ -22,10 +22,7 @@
     \item 在图3.7所示的``病态''曲面中, 事实上所想表达的意思是上下两曲面
         在中间的圆盘
         \[
-            \left\{\begin{aligned}
-            &x^2+y^2=1\\
-            &z=0
-            \end{aligned}\right.
+            x^2+y^2=1,\qquad z=0.
         \]
         处重合,仅此而已. \marginpar{\footnotesize 事实上$f(x)=e^{-\frac{1}{x^2}}$是数学分析里比较重要的一个函数}
 \end{itemize}
@@ -69,7 +66,7 @@
 \]
 在$z$的值固定时的轨迹是点或椭圆, 当然不能有一条直线上的每个点都在曲面上. 
 \end{proof}
-特别地, 书中写双叶双曲面是直纹面, 这应该是老师的一处笔误, 此处应当为双曲抛物面. 
+特别地, 书中写双叶双曲面是直纹面, 这应该是老师的一处笔误, 应当为双曲抛物面. 
 \subsection{二次曲面的直纹性}
 
 我们在这里关注的是``直纹面''的性质, 此处值得注意的是, 直纹面上每个点
@@ -90,13 +87,11 @@ u\in I,v\in \mathbb{R}
 
 在直角坐标变换的过程中, 我们更加关注的是坐标向量的变换: 
 \[
-\begin{cases}
-    \mathbf{e}'_1=a_{11}\mathbf{e}_1+a_{21}\mathbf{e}_2+a_{31}\mathbf{e}_3\\
-
-    \mathbf{e}'_2=a_{12}\mathbf{e}_1+a_{22}\mathbf{e}_2+a_{32}\mathbf{e}_3\\
-
-    \mathbf{e}'_3=a_{13}\mathbf{e}_1+a_{23}\mathbf{e}_2+a_{33}\mathbf{e}_3
-\end{cases}
+\left\{\begin{aligned}
+    \mathbf{e}'_1=a_{11}\mathbf{e}_1+a_{21}\mathbf{e}_2+a_{31}\mathbf{e}_3,\\
+    \mathbf{e}'_2=a_{12}\mathbf{e}_1+a_{22}\mathbf{e}_2+a_{32}\mathbf{e}_3,\\
+    \mathbf{e}'_3=a_{13}\mathbf{e}_1+a_{23}\mathbf{e}_2+a_{33}\mathbf{e}_3.
+\end{aligned}\right.
 \]
 注意这里我们的系数下标是$a_{11}$,$a_{21}$,$a_{31}$的顺序, 而不是我们通常所习惯的
 $a_{11}$,$a_{12}$,$a_{13}$, 这样的目的是为了在矩阵乘法中让$A$变的好看, 这里有:
@@ -167,7 +162,7 @@ b_{13}&b_{23}&b_{33}\\
 \end{pmatrix}.
 \]
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (one.north)++ (0,2em) node[anchor=south west,color=blue!67] (mean){\footnotesize 注意这里$b$的下标永远满足$i\leq j$};
+    \path ($(one.north)!0.2!(one.north east)$)++ (0,2em) node[anchor=south west,color=blue!67] (mean){\small 注意这里$b$的下标永远满足$i\leq j$.};
     \draw [color=blue!57]($(one.north)!0.2!(one.north east)$) |- ([xshift=-0.3ex,color=blue]mean.south east);
 \end{tikzpicture}
 所以最后, 我们需要做的是考虑$B$的特征值, 也即令$Bx=\lambda x$有解的实数$\lambda$ (此处$x$是$1\times3$向量).
@@ -183,18 +178,20 @@ b_{13}&b_{23}&b_{33}\\
     \]
     的三重根, 所以我们知道
 \[
-    \begin{cases}
-        b_{11}+b_{22}+b_{33}=3\lambda\\
-        b_{11}b_{22}+b_{11}b_{33}+b_{22}b_{33}-b_{12}^2-b_{13}^2-b_{23}^2=3\lambda^2
-    \end{cases}
+    \left\{
+    \begin{aligned}
+        &b_{11}+b_{22}+b_{33}=3\lambda,\\
+        &b_{11}b_{22}+b_{11}b_{33}+b_{22}b_{33}-b_{12}^2-b_{13}^2-b_{23}^2=3\lambda^2.
+    \end{aligned}
+    \right.
 \]
 然而, 
 \[b_{11}b_{22}+b_{11}b_{33}+b_{22}b_{33}\leq \frac{1}{3}
-(b_{11}+b_{22}+b_{33})^2=3\lambda^2\]
+(b_{11}+b_{22}+b_{33})^2=3\lambda^2.\]
 我们易知, \[b_{ij}=
 \begin{cases}
-    0& \text{if } i\neq j\\
-    \lambda& \text{if } i=j
+    0,&  i\neq j,\\
+    \lambda,& \text{if } i=j.
 \end{cases}\qedhere
 \]
 \end{proof}
@@ -215,13 +212,13 @@ b_{13}&b_{23}&b_{33}\\
     此时我们能确定的是$\lambda_1,\lambda_2,\lambda_3$中一定有一个是$0$, 
     计算$I_2$的目的就是去计算其中是否有更多的0.
     \begin{enumerate}
-        \item $I_2\neq0$, 此时去计算$I_4$的值
+        \item $I_2\neq0$, 此时去计算$I_4$的值.
 
         那么我们要关注的就是$z$的一次项系数, 也即$b_3'$的值 (此时唯一的问题即在于$z$有没有在坐标变换后出现) , 值得注意的是此时$\lambda_3=0$, 我们对新的直角坐标系下的$\tilde{B}'$按照其第三行
-        展开可以知道, $I_4=0$当且仅当$b_3'=0$
-        \item   $I_2=0$(此时自然有$I_4=0$)
+        展开可以知道, $I_4=0$当且仅当$b_3'=0$.
+        \item   $I_2=0$(此时自然有$I_4=0$).
 
-        那么此时的情况即为仅有$\lambda_1\neq0$,我们关心的内容变成了是否
+        那么此时的情况即为仅有$\lambda_1\neq0$, 我们关心的内容变成了是否
         $b_2'=b_3'=0$成立, 所以我们会去算$K_2$, 此时
         \[
         K_2=-b_{11}((b_2')^2+(b_3')^2)
@@ -257,7 +254,7 @@ b_{13}&b_{23}&b_{33}\\
 由于悬链面事实上就是悬链线经过旋转之后得到的曲面, 所以我们接下来只关注悬链线的方程. 
 如书中所写, $xz$平面上的悬链线的方程是
 \[
-x(t)=b\cosh(t/b)\qquad z(t)=t\qquad t\in\mathbb{R}
+x(t)=b\cosh(t/b),\qquad z(t)=t,\qquad t\in\mathbb{R}.
 \]
 从物理角度而言, 这实际上是固定位于同一高度的两点, 以此两点为端点系上一根绳子, 在仅受重
 力的作用之下的绳子的轨迹. 
@@ -267,10 +264,10 @@ x(t)=b\cosh(t/b)\qquad z(t)=t\qquad t\in\mathbb{R}
   悬链线到曳物线的推导  
 \end{proposition}
 \begin{proof}
-我们在悬链线方程中取$b=1$, 也就是说, 我们的悬链线上的点的坐标是$(\sigma,\cosh,\sigma)$, 即下图之中用红色画出的部分. 
+我们在悬链线方程中取$b=1$, 也就是说, 我们的悬链线上的点的坐标是$(\sigma,\cosh\sigma)$, 即下图之中用红色画出的部分. 
 
-对于悬链线上的一点$A(\sigma,\cosh,\sigma)$, 我们过$A$作悬链线的切线和$x$轴交于$B$点. 通过计算可知, 
-悬链线上的弧$\wideparen{SA}$的长度是$\sinh,\sigma$, 其中$S$点的坐标是$(0,1)$ \marginpar{\footnotesize 我们将不加证明地使用这一事实, 而这一事实的证明会在第六章开篇与大家见面}. 点$C$是切线$AB$上的一点, 满足$|AC|=\sinh,\sigma$, 即$AC$的长度和弧$\wideparen{SA}$的长度相等. 
+对于悬链线上的一点$A(\sigma,\cosh\sigma)$, 我们过$A$作悬链线的切线和$x$轴交于$B$点. 通过计算可知, 
+悬链线上的弧$\wideparen{SA}$的长度是$\sinh\sigma$, 其中$S$点的坐标是$(0,1)$ \marginpar{\footnotesize 我们将不加证明地使用这一事实, 而这一事实的证明会在第六章开篇与大家见面}. 点$C$是切线$AB$上的一点, 满足$|AC|=\sinh\sigma$, 即$AC$的长度和弧$\wideparen{SA}$的长度相等. 
 
 这样的$C$的轨迹便是曳物线的轨迹, 也即下一页图中的绿色曲线. 
 \end{proof}
@@ -291,38 +288,35 @@ x(t)=b\cosh(t/b)\qquad z(t)=t\qquad t\in\mathbb{R}
         \node[below] (B) at ({1.5*(1.5-cosh(1.5)/sinh(1.5))},0){\small\(B\)};
     \end{tikzpicture}
 \end{figure}
-我们将从上述的曳物线的定义出发, 给出曳物线的参数表达式:\newline
-首先, 由于$(\cosh,\sigma)'=\sinh,\sigma$, 所以过点$A$
+我们将从上述的曳物线的定义出发, 给出曳物线的参数表达式. 首先, 由于$(\cosh\sigma)'=\sinh\sigma$, 所以过点$A$
 的切线的方程是
 \[
-y-\cosh,\sigma=\sinh,\sigma\;(x-\sigma)
+y-\cosh\sigma=\sinh\sigma(x-\sigma).
 \]
-从而可知,$B$点坐标为$(\sigma-\text{coth}\,\sigma,0)$, 同时, 两点之间距离公式告诉我们
+从而可知,$B$点坐标为$(\sigma-\operatorname{coth}\sigma,0)$, 同时, 两点之间距离公式告诉我们
 \[
-PR=\frac{\cosh^2\sigma}{\sinh,\sigma}
+PR=\frac{\cosh^2\sigma}{\sinh\sigma}.
 \]
 所以, 通过计算可知, 点$C$的坐标满足: 
 \[
-    x=\sigma-\text{tanh }\sigma\qquad
-    y=\text{sech }\sigma\qquad \sigma\in(0,\infty)
+    x=\sigma-\tanh\sigma,\qquad
+    y=\operatorname{sech}\sigma,\qquad \sigma\in(0,\infty),
 \]
 也就是曳物线的方程. \marginpar{\footnotesize 我们可以发现, 双曲函数在曳物线的学习中是比较重要的, 同时楼老师也会在他的作业中布置和双曲函数有关的内容, 有兴趣的同学可以提前了解关于双曲函数求导运算的内容.}
 \subsection{伪球面}
 我们将在此处给出曳物线的方程: 
 \[
-    x=\sigma-\text{tanh }\sigma\qquad
-    y=\text{sech }\sigma\qquad \sigma\in(0,\infty)
+    x=\sigma-\text{tanh }\sigma,\qquad
+    y=\text{sech }\sigma,\qquad \sigma\in(0,\infty),
 \]
 是在$xOy$平面上的曳物线方程, 通过对于$x$轴的旋转我们可以得到
 伪球面的方程, 伪球面$S_2$的方程是
 \[
-\begin{cases}
-x=\sigma-\text{tanh }\sigma\\
-
-y=\text{sech }\sigma\text{ cos }\theta\qquad \sigma>0,\theta\in[0,2\pi]\\
-
-z=\text{sech }\sigma\text{ sin }\theta
-\end{cases}
+\left\{\begin{aligned}
+&x=\sigma-\tanh\sigma,\\
+&y=\operatorname{sech}\sigma\cos\theta,\\
+&z=\operatorname{sech}\sigma\sin\theta,
+\end{aligned}\right.\qquad \sigma>0,\ \theta\in[0,2\pi].
 \]
 伪球面的更多性质我们将在后续章节中进一步探讨, 当然后续会涉及一些十分复杂的计算, 
 所以在此处和它打好交道总是不错的选择. 

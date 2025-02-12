@@ -29,9 +29,9 @@
 \end{figure}
 于是得到了一个拟合的表达式
 \begin{equation}\label{equ:1}
-    s\approx\sum_{i=1}^n |\mathbf{r}(x_i)-\mathbf{r}(x_{i-1})|\approx\sum_{i=1}^n |\mathbf{r}'(\xi_i)(x_i-x_{i-1})|=\sum_{i=1}^n |\mathbf{r}'(\xi_i)|(x_i-x_{i-1}).
+    s\approx\sum_{i=1}^n |\mathbf{r}(x_i)-\mathbf{r}(x_{i-1})|\approx\sum_{i=1}^n |\mathbf{r}'(x_i)(x_i-x_{i-1})|=\sum_{i=1}^n |\mathbf{r}'(\xi_i)|(x_i-x_{i-1}).
 \end{equation}
-其中第二个等号利用了Lagrange中值定理, \(\xi_i\in(x_{i-1},x_i)\). 发现\eqref{equ:1}最右边是一个Riemann和，所以对\eqref{equ:1}两边取极限就得到\marginpar{\footnotesize 这就是讲义里弧长定义的直观解释.}
+第二个\(\approx\)是因为在\(x_{i-1},x_i\)十分接近的时候, 可以将\(\mathbf{r}(x_i)-\mathbf{r}(x_{i-1})\)近似为\(\mathbf{r}'(x_i)(x_i-x_{i-1})\). 发现\eqref{equ:1}最右边是一个Riemann和，所以对\eqref{equ:1}两边取极限就得到\marginpar{\footnotesize 这就是讲义里弧长定义的直观解释.}
 \begin{equation}\label{equ:2}
     s=\int_{x_0}^{x_n}|\mathbf{r}'(x)|\dd x.
 \end{equation}
@@ -149,8 +149,12 @@
 \]
 如果使用Einstein求和约定\marginpar{\footnotesize 如果不省略就太长了……}, 即省略求和符号, 就可以写成
 \[
-    (\mathbf{r}'(t))^2=\left(\frac{\partial\mathbf{r}}{\partial u^i}\frac{\dd u^i}{\dd t}\right)^2=\frac{\dd u^i}{\dd t}\frac{\dd u^j}{\dd t}\frac{\partial\mathbf{r}}{\partial u^i}\cdot\frac{\partial\mathbf{r}}{\partial u^j}=g_{ij}\dot{u}^i\dot{u}^j,
+    (\mathbf{r}'(t))^2=\left(\frac{\partial\mathbf{r}}{\partial u^i}\frac{\dd u^i}{\dd t}\right)^2=\tikzmarknode{sum}{\highlight{violet}{\displaystyle\frac{\dd u^i}{\dd t}\frac{\dd u^j}{\dd t}\frac{\partial\mathbf{r}}{\partial u^i}\cdot\frac{\partial\mathbf{r}}{\partial u^j}}}=g_{ij}\dot{u}^i\dot{u}^j,
 \]
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path ($(sum.north)!0.9!(sum.north east)$)++ (0,1.2em) node[anchor=south west,color=violet!67] (mean){\small 省略自\(\sum_i\sum_j\frac{\dd u^i}{\dd t}\frac{\dd u^j}{\dd t}\frac{\partial\mathbf{r}}{\partial u^i}\cdot\frac{\partial\mathbf{r}}{\partial u^j}\).};
+    \draw [color=violet!57]($(sum.north)!0.9!(sum.north east)$) |- ([xshift=-0.3ex,color=violet]mean.south east);
+\end{tikzpicture}
 其中\(g_{ij}\overset{\text{def}}{=}\frac{\partial\mathbf{r}}{\partial u^i}\cdot\frac{\partial\mathbf{r}}{\partial u^j}\). 设一条十分靠近\(\mathbf{r}\)的曲线为\(\tilde{u}^i=u^i(t)+\epsilon w^i(t),i=1,2\), 而且\(w^i(a)=w^i(b)=0\), 那么
 \begin{gather}\label{equ:4}
     E=\frac12\int_a^bg_{ij}\dot{u}^i\dot{u}^j\dd t\overset{\text{def}}{=}\int_a^b\varphi(u^1,u^2;\dot u^1,\dot u^2)\dd t,\\
@@ -162,15 +166,19 @@
 \]
 其中
 \[
-    \int_a^b \frac{\partial\varphi}{\partial\dot u^i}\dot w^i\dd t=\int_a^b\frac{\partial\varphi}{\partial\dot u^i}\dd w^i=\left.\frac{\partial\varphi}{\partial\dot u^i}w^i\right|_a^b-\int_a^bw^i\frac{\dd}{\dd t}\left(\frac{\partial\varphi}{\partial\dot u^i}\right)\dd t=-\int_a^bw^i\frac{\dd}{\dd t}\left(\frac{\partial\varphi}{\partial\dot u^i}\right)\dd t.
+    \int_a^b \frac{\partial\varphi}{\partial\dot u^i}\dot w^i\dd t=\int_a^b\frac{\partial\varphi}{\partial\dot u^i}\dd w^i=\tikzmarknode{zero}{\highlight{red}{\displaystyle\left.\frac{\partial\varphi}{\partial\dot u^i}w^i\right|_a^b}}-\int_a^bw^i\frac{\dd}{\dd t}\left(\frac{\partial\varphi}{\partial\dot u^i}\right)\dd t=-\int_a^bw^i\frac{\dd}{\dd t}\left(\frac{\partial\varphi}{\partial\dot u^i}\right)\dd t.
 \]
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (zero.north)++ (0,1.2em) node[anchor=south west,color=red!67] (mean){\small 由边界假设, 此项为0.};
+    \draw [color=red!57](zero.north) |- ([xshift=-0.3ex,color=blue]mean.south east);
+\end{tikzpicture}
 代回原式就得到
 \[
     \int_a^bw^i\left(\frac{\partial\varphi}{\partial u^i}-\frac{\dd}{\dd t}\left(\frac{\partial\phi}{\partial\dot u^i}\right)\right)\dd t=0.
 \]
 由于我们可以任意选取临近曲线\(w^i\), 所以一定有
 \[
-    \frac{\partial\varphi}{\partial u^i}-\frac{\dd}{\dd t}\left(\frac{\partial\phi}{\partial\dot u^i}\right)=0,\quad i=1,2.
+    \highlight{blue}{\displaystyle\frac{\partial\varphi}{\partial u^i}}-\highlight{orange}{\displaystyle\frac{\dd}{\dd t}\left(\frac{\partial\phi}{\partial\dot u^i}\right)}=0,\quad i=1,2.
 \]
 即Euler-Lagrange方程. 而根据我们在\eqref{equ:4}里对\(\varphi\)的定义,
 \begin{gather*}
@@ -179,14 +187,14 @@
 \end{gather*}
 代入即得
 \[
-    \frac12\frac{\partial g_{jk}}{\partial u^i}\dot u^j\dot u^k-g_{ij}\ddot u^j-\frac{\partial g_{ij}}{\partial u^k}\dot u^k\dot u^j=0,\quad i=1,2.
+    \highlight{blue}{\displaystyle\frac12\frac{\partial g_{jk}}{\partial u^i}\dot u^j\dot u^k}-\highlight{orange}{\displaystyle g_{ij}\ddot u^j-\frac{\partial g_{ij}}{\partial u^k}\dot u^k\dot u^j}=0,\quad i=1,2.
 \]
 注意到
 \begin{align*}
     &\frac{\partial g_{ij}}{\partial u^k}\dot u^k\dot u^j-\frac12\frac{\partial g_{jk}}{\partial u^i}\dot u^j\dot u^k\\
     =&\frac{1}{2}\left(\frac{\partial g_{ij}}{\partial u^k}+\frac{\partial g_{ik}}{\partial u^j}-\frac{\partial g_{jk}}{\partial u^i}\right)\dot u^j\dot u^k\\
-    =&\frac{1}{2}\left(\frac{\partial^2\mathbf{r}}{\partial u^k\partial u^i}\frac{\partial\mathbf{r}}{\partial u^j}+\frac{\partial^2\mathbf{r}}{\partial u^k\partial u^j}\frac{\partial\mathbf{r}}{\partial u^i}+\frac{\partial^2\mathbf{r}}{\partial u^j\partial u^i}\frac{\partial\mathbf{r}}{\partial u^k}\right.\\
-     &+\left.\frac{\partial^2\mathbf{r}}{\partial u^j\partial u^k}\frac{\partial\mathbf{r}}{\partial u^i}-\frac{\partial^2\mathbf{r}}{\partial u^i\partial u^k}\frac{\partial\mathbf{r}}{\partial u^j}-\frac{\partial^2\mathbf{r}}{\partial u^i\partial u^j}\frac{\partial\mathbf{r}}{\partial u^k}\right)\dot u^j\dot u^k\\
+    =&\frac{1}{2}\left(\cancel{\frac{\partial^2\mathbf{r}}{\partial u^k\partial u^i}\frac{\partial\mathbf{r}}{\partial u^j}}+\frac{\partial^2\mathbf{r}}{\partial u^k\partial u^j}\frac{\partial\mathbf{r}}{\partial u^i}+\bcancel{\frac{\partial^2\mathbf{r}}{\partial u^j\partial u^i}\frac{\partial\mathbf{r}}{\partial u^k}}\right.\\
+     &+\left.\frac{\partial^2\mathbf{r}}{\partial u^j\partial u^k}\frac{\partial\mathbf{r}}{\partial u^i}-\cancel{\frac{\partial^2\mathbf{r}}{\partial u^i\partial u^k}\frac{\partial\mathbf{r}}{\partial u^j}}-\bcancel{\frac{\partial^2\mathbf{r}}{\partial u^i\partial u^j}\frac{\partial\mathbf{r}}{\partial u^k}}\right)\dot u^j\dot u^k\\
     =&\frac{\partial^2\mathbf{r}}{\partial u^j\partial u^k}\frac{\partial\mathbf{r}}{\partial u^i}\dot u^j\dot u^k
 \end{align*}
 因此

@@ -8,3 +8,4 @@
 \RequirePackage[fontset=none]{ctex}
 \RequirePackage{titlesec}
 \RequirePackage{fancyhdr}
+\RequirePackage{cancel}
