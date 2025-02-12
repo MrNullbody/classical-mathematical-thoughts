@@ -29,7 +29,7 @@
 \end{figure}
 于是得到了一个拟合的表达式
 \begin{equation}\label{equ:1}
-    s\approx\sum_{i=1}^n |\mathbf{r}(x_i)-\mathbf{r}(x_{i-1})|=\sum_{i=1}^n |\mathbf{r}'(\xi_i)(x_i-x_{i-1})|=\sum_{i=1}^n |\mathbf{r}(\xi_i)'|(x_i-x_{i-1}).
+    s\approx\sum_{i=1}^n |\mathbf{r}(x_i)-\mathbf{r}(x_{i-1})|\approx\sum_{i=1}^n |\mathbf{r}'(\xi_i)(x_i-x_{i-1})|=\sum_{i=1}^n |\mathbf{r}'(\xi_i)|(x_i-x_{i-1}).
 \end{equation}
 其中第二个等号利用了Lagrange中值定理, \(\xi_i\in(x_{i-1},x_i)\). 发现\eqref{equ:1}最右边是一个Riemann和，所以对\eqref{equ:1}两边取极限就得到\marginpar{\footnotesize 这就是讲义里弧长定义的直观解释.}
 \begin{equation}\label{equ:2}
@@ -70,7 +70,7 @@
 
 固定点\(\mathbf{r}(t)\), 那么此处曲线的方向就是\(\mathbf{r}'(t)\), 而在下一处的方向是\(\mathbf{r}'(t+\dd t)\). 为了排除方向向量的长度带来的不确定性, 我们额外规定弧长参数化条件, 即\(|\mathbf{r}'(t)|\equiv1\). 那么, 把上面的两个向量移到同一个起点, 就构成了一个等腰三角形. 如果这个三角形的顶角记为\(\dd\theta\), 那么由简单的三角学知道, \(2|\mathbf{r}'(t)|\cdot\sin(\dd\theta/2)=|\mathbf{r}'(t+\dd t)-\mathbf{r}'(t)|\). 所以
 \[
-    \frac{\dd\theta}{\dd s}=\frac{2\dd\sin(\theta/2)}{s(t+\dd t)-s(t)}=\frac{|\mathbf{r}'(t+\dd t)-\mathbf{r}'(t)|}{|\mathbf{r}'(t)|(s(t+\dd t)-s(t)|},
+    \frac{\dd\theta}{\dd s}=\frac{2\dd\sin(\theta/2)}{s(t+\dd t)-s(t)}=\frac{|\mathbf{r}'(t+\dd t)-\mathbf{r}'(t)|}{|\mathbf{r}'(t)||s(t+\dd t)-s(t)|},
 \]
 而我们刚才作的弧长参数化假设发挥了惊人的作用, \(|r'(t)|\)和\(s(t+\dd t)-s(t)\)变成了非常简单的形式, 于是\marginpar{\footnotesize 如此的形式完全依赖于弧长参数化呀!}
 \[
@@ -93,13 +93,13 @@
 
 我们还可以证明不会有切平面外的切向量存在. 回忆微分的定义,
 \[
-    \mathbf{r}(\mathbf{x})=\dd\mathbf{r}_{\mathbf{x}_0}(\mathbf{x}-\mathbf{x}_0)+o(\mathbf{x}-\mathbf{x}_0),
+    \mathbf{r}(\mathbf{x})=\dd\mathbf{r}_{\mathbf{x}_0}(\mathbf{x}-\mathbf{x}_0)+o(|\mathbf{x}-\mathbf{x}_0|),
 \]
 其中\(\dd\mathbf{r}_{\mathbf{x}_0}\)是点\(\mathbf{x}_0\)处的微分, 是一个线性映射,
 \[
     \dd\mathbf{r}=\frac{\partial\mathbf{r}}{\partial u}\dd u+\frac{\partial\mathbf{r}}{\partial v}\dd v.
 \]
-因此, 所有满足相切条件, 或者说与曲面的误差是小量\(o(\mathbf{x}-\mathbf{x}_0)\)的向量, 都已经包含在\(\dd\mathbf{r}_{\mathbf{x}_0}\)的像集, 也就是切平面里了, 可以记为\(T_{\mathbf{x}_0}S\).
+因此, 所有满足相切条件, 或者说与曲面的误差是小量\(o(|\mathbf{x}-\mathbf{x}_0|)\)的向量, 都已经包含在\(\dd\mathbf{r}_{\mathbf{x}_0}\)的像集, 也就是切平面里了, 可以记为\(T_{\mathbf{x}_0}S\).
 
 为了更简单地描述这个曲面的方向, 我们取出\(T_{\mathbf{x}_0}S\)的正交补空间\((T_{\mathbf{x}_0S})^{\perp}=\operatorname{span}(\mathbf{n})\), 它是一维的. \(\mathbf{n}\)就叫作法向量. 因为\(\mathbf{n}\)与切平面里的所有向量正交, 可以通过\(\mathbf{n}=\frac{\partial\mathbf{r}}{\partial u}\times\frac{\partial\mathbf{r}}{\partial v}\)得到, 并且\(\mathbf{n}\cdot\mathbf{v}\overset{?}{=}0\)可以判断是否是切向量.
 \subsection{测地线}\label{sec:3}
@@ -139,11 +139,11 @@
 \[
     L(\mathbf{r})=\int_a^b|\mathbf{r}'(t)|\dd t.
 \]
-如果\(\mathbf{r}\)使\(L\)取到极小值, 且\(|\mathbf{r}'|\)恒定不变, 那么能量函数
+如果\(\mathbf{r}\)使\(L\)取到极小值, 且\(|\mathbf{r}'|\)恒定不变, 那么``能量函数''
 \[
     E(\mathbf{r})=\frac{1}{2}\int_a^b(\mathbf{r}'(t))^2\dd t
 \]
-也将取到极小值, 且其极小值一定是\(L\)的极小值, 这由Cauchy-Schwarz不等式保证: \(L^2\le2(b-a)E\), 等号取到当且仅当\(|\mathbf{r}'|\)恒定不变. 这将方便我们的计算. 将\(\mathbf{r}\)写为\(\mathbf{r}(u^1(t),u^2(t))\)的形式, 那么
+也将取到极小值, 且其极小值点一定是\(L\)的极小值点, 这由Cauchy-Schwarz不等式保证: \(L^2\le2(b-a)E\), 等号取到当且仅当\(|\mathbf{r}'|\)恒定不变. 这将方便我们的计算. 将\(\mathbf{r}\)写为\(\mathbf{r}(u^1(t),u^2(t))\)的形式, 那么
 \[
     (\mathbf{r}'(t))^2=\left(\frac{\partial\mathbf{r}}{\partial u^1}\frac{\dd u^1}{\dd t}+\frac{\partial\mathbf{r}}{\partial u^2}\frac{\dd u^2}{\dd t}\right)^2.
 \]
@@ -332,7 +332,6 @@
     \begin{figure}[!ht]
         \centering
         \begin{tikzpicture}
-            \usetikzlibrary{intersections}
             \draw (0,0)--(0,5);
             \draw (-2,1) node[below]{\small\(z_1\)} arc (180:140:4);
             \draw (2,1) node[below]{\small\(z_2\)}arc (0:40:4);

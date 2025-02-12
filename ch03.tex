@@ -1,0 +1,329 @@
+\documentclass[./main.tex]{subfiles}
+\begin{document}
+\chapter{曲面与曲线}
+    当我们进入第三章的时候, 我们所关心的内容从直线和平面的代数化表示
+    变成了曲线以及曲面. 在第二章的末尾我们已经见过了两个单参数直线族
+    编织曲面的例子, 我们将在这章进一步对其所编织的曲面进行探究. \par
+    从某种意义上来说, 我们在这一章之中所能看到的, 正是对于二次曲面的细致探究
+    , 并看一看一些非二次曲面是怎么样的. 
+\section{曲线与曲面的表示}\label{3.1}
+
+这可以说是我们和曲线的第一次邂逅, 各位可能会觉得\ref{3.1}中的内容
+是比较简单和平凡的, 但这节的目的更多的可能是让我们来看看我们后面所想要研究的曲线
+以及曲面是什么样的: 我们在学习测地线时\marginpar{\footnotesize 测地线见\ref{sec:3}}
+会和圆柱螺线再度相遇；而柱面和锥面可以被视作特殊的直纹面.
+
+以下是一些对于本节中可能会产生理解难度的部分内容的注解: 
+\begin{itemize}
+    \item 一个概念上的问题是``什么是圆柱面'', 具体定义可参照``曲面的表示''
+    一节中对于准线以及圆柱面的定义 (误解可能会造成对习题 (3.1.6) 的理解不足) . 
+    \item 在书中书写的各类柱面中, 实际上均省略了``$z\in\mathbb{R}$"这一要求, 
+    即此处$z$可取任意值的说明. 
+    \item 在图3.7所示的``病态''曲面中, 事实上所想表达的意思是上下两曲面
+        在中间的圆盘
+        \[
+            \left\{\begin{aligned}
+            &x^2+y^2=1\\
+            &z=0
+            \end{aligned}\right.
+        \]
+        处重合,仅此而已. \marginpar{\footnotesize 事实上$f(x)=e^{-\frac{1}{x^2}}$是数学分析里比较重要的一个函数}
+\end{itemize}
+
+当然, 在\ref{3.1}中, 有一些习题是写出讲义中 (未给出的) 曲线的参数化表示, 此类题目老师可能不会布置成习题, 但仍然推荐大家都写一写. 事实上, 对于曲线的熟悉程度
+在学习解析几何的过程中是十分关键和重要的. 
+\section{二次曲面的形状与性质}\label{3.2}
+正如本节的标题所说的, 我们在这节中将会对于各类 (相对复杂的) 二次曲面有一个更加形象的认识. 让我们先来看看二次曲面在几何上究竟是怎么样的. 
+\subsection{二次曲面的形状}
+我们在\ref{3.1}中已经看到了圆锥曲线绕着$z$轴旋转后所形成的一些特殊的圆锥曲面. 事实上, 这里的二次曲面 (除双曲抛物面外) 便是将横截面的圆改成椭圆所得到的结果, 也即旋转曲面的推广. 对于特殊的双曲抛物面: 
+\[
+\frac{x^2}{a^2}-\frac{y^2}{b^2}=2z,
+\]
+我们仍可以从横截面的角度去考虑它, 但此处我们不是将$z$视作定值, 而是分别将$x$和$y$视作定值, 这样便分别得到了开口向下及向上的二次曲线. \footnote{这正是书中定理 4 所说的沿着抛物线平移}\marginpar{\footnotesize 椭圆抛物面有同样的性质嘛? }
+ (我们往往会称曲面的形状为``马鞍形'') 
+
+同时, 我们仍然关注二次曲面的参数化 (这在后续求曲面的$Gauss$曲率时是十分重要的) , 期中双曲抛物面的参数化方式是值得一提的. 我们发现:
+\[
+\frac{x^2}{a^2}-\frac{y^2}{b^2}=2z\quad
+\Longleftrightarrow\quad
+\left(\frac{x}{a}-\frac{y}{b}\right)
+\left(\frac{x}{a}+\frac{y}{b}\right)=2z,
+\]
+所以说, 我们可以作如下代换: 
+\[
+    \frac{x}{a}-\frac{y}{b}\overset{\text{def}}{=}u,
+\qquad
+\frac{x}{a}+\frac{y}{b}\overset{\text{def}}{=} v.
+\]
+这样代换的好处是参数化之后的坐标是非常简单的, 但在后续即将学习到的弧长参数化之后的
+模长计算时\marginpar{\footnotesize 弧长参数化见\ref{sec:2}}
+所得到的条件未必显得简单, 各位经过计算后应该会对此有更深的体会.
+\subsection{二次曲面的凸性}
+事实上本小节的内容是相对于全书独立的, 此处所需要解释的其实仅仅是证明中的一个细节: 为什么
+直线$l$不在双叶双曲面$S$上?
+\begin{proof}
+我们观察双叶双曲面可知, 在平面$z=c$和$z=-c$中间的区域内, 并没有双叶双曲面中的点, 所以
+直线$l$必须要和平面$z=0$平行, 但可以发现, 曲面
+\[
+\frac{x^2}{a^2}+\frac{y^2}{b^2}-\frac{z^2}{c^2}+1=0
+\]
+在$z$的值固定时的轨迹是点或椭圆, 当然不能有一条直线上的每个点都在曲面上. 
+\end{proof}
+特别地, 书中写双叶双曲面是直纹面, 这应该是老师的一处笔误, 此处应当为双曲抛物面. 
+\subsection{二次曲面的直纹性}
+
+我们在这里关注的是``直纹面''的性质, 此处值得注意的是, 直纹面上每个点
+的方向是和点本身有关的, 也即在曲面
+\[
+\mathbf{r}(u,v)=\mathbf{r}(u)+v\mathbf{l}(u),
+\quad
+u\in I,v\in \mathbb{R}
+\]
+之中$\mathbf{l}(u)$是和$u$有关的函数, 具体的例子可以参照\ref{3.6.3}切线面、\ref{3.6.4}圆柱螺旋面的例子. 
+同时, 在习题中出现了求直母线的题目, 其实其本质上的逻辑就是过给定点的直线上的全部点都在曲面上, 仅此而已. \marginpar{\footnotesize 这也是24年秋经典数学思想期末考试的考查内容.}
+
+\section{直角坐标变换}\label{3.3}
+
+本节的内容在计算上更像是高等代数课程的内容, 我们会在进行直角坐标变换的过程中遇到矩阵的
+计算等比较技术化的内容. 同时, 由于直角坐标变换和等距变换\marginpar{\footnotesize 等距变换见\ref{4.1}}在计算中的相似性, 在这节中我们需要搞明白``变的究竟是什么''这一问题, 同时也推荐大家自己
+在课后将这节课所讲的内容重新计算一遍, 提高对这节内容的理解.
+
+在直角坐标变换的过程中, 我们更加关注的是坐标向量的变换: 
+\[
+\begin{cases}
+    \mathbf{e}'_1=a_{11}\mathbf{e}_1+a_{21}\mathbf{e}_2+a_{31}\mathbf{e}_3\\
+
+    \mathbf{e}'_2=a_{12}\mathbf{e}_1+a_{22}\mathbf{e}_2+a_{32}\mathbf{e}_3\\
+
+    \mathbf{e}'_3=a_{13}\mathbf{e}_1+a_{23}\mathbf{e}_2+a_{33}\mathbf{e}_3
+\end{cases}
+\]
+注意这里我们的系数下标是$a_{11}$,$a_{21}$,$a_{31}$的顺序, 而不是我们通常所习惯的
+$a_{11}$,$a_{12}$,$a_{13}$, 这样的目的是为了在矩阵乘法中让$A$变的好看, 这里有:
+\[A=
+\begin{pmatrix}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}
+\end{pmatrix}\]
+以及\marginpar{\footnotesize 这里是矩阵乘法的定义}
+\begin{equation}
+    \begin{pmatrix}\mathbf{e}'_1&\mathbf{e}'_2&\mathbf{e}'_3\end{pmatrix}=\begin{pmatrix}\mathbf{e}_1&\mathbf{e}_2&\mathbf{e}_3\end{pmatrix}A\label{坐标变换}
+\end{equation}
+此处由于det$(A^T)=$det$(A)$, 而det$(AA^T)=1$, (这里是因为$e_i'e_j'=\delta_{ij}$\marginpar{\footnotesize \(\delta_{ij}\)即Kronecker记号: \[\delta_{ij}=\begin{cases}1,&i=j,\\0,&i\ne j.\end{cases}\]}
+) 可以得到det$(A)=1$. 
+我们先不关注比较平凡的平移, 来看有一个点坐标不变的情况: 
+\[
+    \begin{pmatrix}\mathbf{e}_1&\mathbf{e}_2&\mathbf{e}_3\end{pmatrix}
+\begin{pmatrix}
+     x  \\
+      y\\
+      z
+\end{pmatrix}
+=
+    \begin{pmatrix}\mathbf{e}'_1&\mathbf{e}'_2&\mathbf{e}'_3\end{pmatrix}
+\begin{pmatrix}
+     x'  \\
+      y'\\
+      z'
+\end{pmatrix}.
+\]
+根据\eqref{坐标变换}可知, 代入后将$\begin{pmatrix}\mathbf{e}_1&\mathbf{e}_2&\mathbf{e}_3\end{pmatrix}$约去, 我们便得到了坐标变换公式. 
+
+当然, 此处对于圆锥曲线的讨论是十分重要的, 这也是解释了为什么双曲线, 椭圆和抛物线被称作圆周曲线. 
+
+最为重要的是, 此处点的坐标没变, 变的是坐标系！
+\section{二次曲面的分类}
+
+我们知道, \textit{二次曲面}的定义是由二次多项式方程
+\begin{multline*}
+    F(x,y,z)=b_{11}x^2+b_{22}y^2+b_{33}z^2+2b_{12}xy+
+2b_{13}xz+2b_{23}yz\\
++2b_1x+2b_2y+2b_3z+c=0.
+\end{multline*}
+所定义的曲面. 我们先假设我们已经把交叉项 (即$xy,yz,xz$项) 通过一定的代数变形消去了, 
+即我们的二次项形如$(x'+a_1)^2+(y'+a_2)^2+(z'+a_3)^2$的形式. 
+那么对于接下来的工作, 事实上是相对比较平凡的, 我们所需要做的仅仅是把余下来的一次项通过配方的形式配进二次项内, 然后就可以化作二次曲面的标准形式了. 也正是因此, 我们先来处理二次齐次多项式的化简. 
+\subsection{二次齐次多项式的化简}
+$F(x,y,z)$的二次齐次多项式部分形如
+\begin{equation*}
+\Phi(x,y,z)=b_{11}x^2+b_{22}y^2+b_{33}z^2+2b_{12}xy+
+2b_{13}xz+2b_{23}yz
+\end{equation*}
+的形式, 而我们的目标形式是
+\begin{equation}\label{标准形式}
+\Phi(x,y,z)=\lambda_1x'^2+\lambda_2y'^2+\lambda_3z'^2.
+\end{equation}
+如讲义所述, 我们把坐标变换公式代入可知, 我们需要\marginpar{\footnotesize 此处$A^T=A^{-1}$是因为$A$的定义.}
+\[
+BA=A\text{diag}(\lambda_1,\lambda_2,\lambda_3)=\text{diag}(\lambda_1,\lambda_2,\lambda_3)A,
+\]
+这里, $B$的定义是
+\[B=
+\begin{pmatrix}
+b_{11}&b_{12}&b_{13}\\
+\tikzmarknode{one}{\highlight{blue}{b_{12}}}&b_{22}&b_{23}\\
+b_{13}&b_{23}&b_{33}\\
+\end{pmatrix}.
+\]
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (one.north)++ (0,2em) node[anchor=south west,color=blue!67] (mean){\footnotesize 注意这里$b$的下标永远满足$i\leq j$};
+    \draw [color=blue!57]($(one.north)!0.2!(one.north east)$) |- ([xshift=-0.3ex,color=blue]mean.south east);
+\end{tikzpicture}
+所以最后, 我们需要做的是考虑$B$的特征值, 也即令$Bx=\lambda x$有解的实数$\lambda$ (此处$x$是$1\times3$向量).
+
+整个证明在过程上是比较技术化的, 但讲义整体上写的是比较详细的, 在这里我们给出如果三个特征值都相等的情况的讨论. 
+\begin{proposition}
+    如果三阶实对称矩阵$B$的三个特征值相等,设值为$\lambda$,则$B=\lambda E_3$
+\end{proposition}
+\begin{proof}
+    由于此时$\lambda$是方程
+    \[
+    x^3-I_1x^2+I_2x-I_3=0
+    \]
+    的三重根, 所以我们知道
+\[
+    \begin{cases}
+        b_{11}+b_{22}+b_{33}=3\lambda\\
+        b_{11}b_{22}+b_{11}b_{33}+b_{22}b_{33}-b_{12}^2-b_{13}^2-b_{23}^2=3\lambda^2
+    \end{cases}
+\]
+然而, 
+\[b_{11}b_{22}+b_{11}b_{33}+b_{22}b_{33}\leq \frac{1}{3}
+(b_{11}+b_{22}+b_{33})^2=3\lambda^2\]
+我们易知, \[b_{ij}=
+\begin{cases}
+    0& \text{if } i\neq j\\
+    \lambda& \text{if } i=j
+\end{cases}\qedhere
+\]
+\end{proof}
+在这小节中最值得注意的是, 我们整个过程中所做的一切其实就是在计算矩阵$B$的特征值, 
+同时这些特征值也正是\eqref{标准形式}的二次项系数. 同时对特征值并不熟悉的同学们也不用担心
+, 在期末考试时你们应该已经在高等代数课与之有过更加深入的交流了. 
+\subsection{二次曲面的分类}
+这小节的主要内容是用不变量来给出曲面的标准形式, 我们在这里所写的内容将会是如何自然地理解不变量的计算逻辑, 从而更好地去判断曲面的类型.  (我们在此处承认有关于不变量和半不变量的结论, 即承认书中\textbf{定理6}的内容) 
+\begin{proof}
+我们按照以下逻辑进行讨论: 
+\begin{enumerate}
+    \item 计算$I_3$.
+
+    由于不变量的原因, 我们知道$I_3=\lambda_1\lambda_2\lambda_3$成立, 而如果
+    $I_3\neq 0$, 那么曲面一定形如$\lambda_1x^2+\lambda_2y^2+\lambda_3z^2+c=0$的形式,从而一定是椭球面, 虚椭球面或点. 
+    \item 计算$I_2$(在$I_3=0$的情况下).
+
+    此时我们能确定的是$\lambda_1,\lambda_2,\lambda_3$中一定有一个是$0$, 
+    计算$I_2$的目的就是去计算其中是否有更多的0.
+    \begin{enumerate}
+        \item $I_2\neq0$, 此时去计算$I_4$的值
+
+        那么我们要关注的就是$z$的一次项系数, 也即$b_3'$的值 (此时唯一的问题即在于$z$有没有在坐标变换后出现) , 值得注意的是此时$\lambda_3=0$, 我们对新的直角坐标系下的$\tilde{B}'$按照其第三行
+        展开可以知道, $I_4=0$当且仅当$b_3'=0$
+        \item   $I_2=0$(此时自然有$I_4=0$)
+
+        那么此时的情况即为仅有$\lambda_1\neq0$,我们关心的内容变成了是否
+        $b_2'=b_3'=0$成立, 所以我们会去算$K_2$, 此时
+        \[
+        K_2=-b_{11}((b_2')^2+(b_3')^2)
+        \]
+        成立, 其中$b_{11}\neq0$. 那么自然地, $K_2=0$对应着坐标变换后不存在$y',z'$的情况, 而$K_2\neq0$
+        对应着$y'$存在的情况.\qedhere 
+\end{enumerate}
+    \end{enumerate}
+\end{proof}
+上述的步骤希望能够让整个计算不变量的过程显得自然, 事实上, 从笔者个人的理解来讲, 这里的矩阵$\tilde{B}'$是理解整个分类逻辑的关键, 特别地, 相比于不变量的计算, 整个分类的处理逻辑是更加值得体会的. 
+\section{曲面的相交与曲面所围的区域}
+正如讲义所言, 这节是为了日后画积分的示意图服务的, 而建立一个对于曲面的直观认识无疑是非常重要的, 同时本节
+在讲义上是比较清晰和明确的, 各位参照讲义即可. 
+\section{一些非二次曲面的例子}
+我们将在这一节逐一解释书中所给的各类非二次曲面的例子, 在后续对于微分几何及双曲几何的
+学习中, 环面的例子在计算Gauss曲率时再次出现, 伪球面的计算则是讲义中双曲几何模型建立的基础. 
+
+在这节中, 最为重要的应该就是与曳物线以及伪球面的初识, 希望大家能在此就对其
+有一个相对全面的认识, 这样在后续的计算中会相对比较熟悉和轻松. 
+\subsection{环面}
+正如讲义所说, 环面便是一个平面上的圆绕着一条轴旋转后得到的结果, 其参数化还是比较
+自然的, 值得一提的是, 环面是完备且联通的欧几里德曲面的一类 (但这其实和本讲义内容无关) . 详见\cite{gos}.
+\subsection{Dupin环面}
+这是一个比较有趣的例子, 但在讲义后续并未再次涉及, 将其形象理解成为
+``两头连在一起的羊角包''可能是一个不错的想法. 
+\subsection{切线面}\label{3.6.3}
+切线面是直纹面的一种, 其本质便是在直纹面中将$\mathbf{l}(u)$选作曲线在该点的切线方向, 仅此而已. 对于书上的配图, 事实上的意思是将图3.24中靠下侧的相对光滑的曲线视为
+目标曲线, 对其上的每点做切线形成切线面 (事实上没有看懂此图并不会影响对于切线面的理解程度) . 
+\subsection{圆柱螺旋面}\label{3.6.4}
+这里的正螺面和渐开线螺旋面都是针对圆柱螺线上的点选取不同的$\mathbf{l}(u)$后得到的
+曲面, 此处的例子可以帮助我们更好地理解直纹面的性质, 即$\mathbf{l}(u)$选取的任意性. 
+\subsection{悬链面}
+由于悬链面事实上就是悬链线经过旋转之后得到的曲面, 所以我们接下来只关注悬链线的方程. 
+如书中所写, $xz$平面上的悬链线的方程是
+\[
+x(t)=b\cosh(t/b)\qquad z(t)=t\qquad t\in\mathbb{R}
+\]
+从物理角度而言, 这实际上是固定位于同一高度的两点, 以此两点为端点系上一根绳子, 在仅受重
+力的作用之下的绳子的轨迹. 
+
+我们下面将要解释悬链线和曳物线之间的关系, 从而能够对曳物线有更加深入的了解. 
+\begin{proposition}
+  悬链线到曳物线的推导  
+\end{proposition}
+\begin{proof}
+我们在悬链线方程中取$b=1$, 也就是说, 我们的悬链线上的点的坐标是$(\sigma,\cosh,\sigma)$, 即下图之中用红色画出的部分. 
+
+对于悬链线上的一点$A(\sigma,\cosh,\sigma)$, 我们过$A$作悬链线的切线和$x$轴交于$B$点. 通过计算可知, 
+悬链线上的弧$\wideparen{SA}$的长度是$\sinh,\sigma$, 其中$S$点的坐标是$(0,1)$ \marginpar{\footnotesize 我们将不加证明地使用这一事实, 而这一事实的证明会在第六章开篇与大家见面}. 点$C$是切线$AB$上的一点, 满足$|AC|=\sinh,\sigma$, 即$AC$的长度和弧$\wideparen{SA}$的长度相等. 
+
+这样的$C$的轨迹便是曳物线的轨迹, 也即下一页图中的绿色曲线. 
+\end{proof}
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}
+        \draw[-stealth] (-4,0) -- (4,0);
+        \draw[-stealth] (0,-1) -- (0,4);
+        \draw[red!70!black, domain=-2:2,thick] plot(1.5*\x,{cosh(\x)}) node[pos=0.7,sloped,anchor=south west](A){};
+        \draw[green!70!black, domain=0:3.5,thick,name path=p1] plot({1.5*(\x-tanh(\x))},{1/cosh(\x)});
+        \draw[blue!70!black, domain=-0.1:2,thick,name path=p2] plot({1.5*\x},{sinh(1.5)*(\x-1.5)+cosh(1.5)});
+        \node[right] (A) at (2.25,{cosh(1.5)}){\small\(A\)};
+        \fill (2.25,{cosh(1.5)}) circle[radius=1pt];
+        \path[name intersections={of=p1 and p2}];
+        \node[above] (C) at (intersection-1){\small\(C\)};
+        \fill (intersection-1) circle[radius=1pt];
+        \fill ({1.5*(1.5-cosh(1.5)/sinh(1.5))},0) circle[radius=1pt];
+        \node[below] (B) at ({1.5*(1.5-cosh(1.5)/sinh(1.5))},0){\small\(B\)};
+    \end{tikzpicture}
+\end{figure}
+我们将从上述的曳物线的定义出发, 给出曳物线的参数表达式:\newline
+首先, 由于$(\cosh,\sigma)'=\sinh,\sigma$, 所以过点$A$
+的切线的方程是
+\[
+y-\cosh,\sigma=\sinh,\sigma\;(x-\sigma)
+\]
+从而可知,$B$点坐标为$(\sigma-\text{coth}\,\sigma,0)$, 同时, 两点之间距离公式告诉我们
+\[
+PR=\frac{\cosh^2\sigma}{\sinh,\sigma}
+\]
+所以, 通过计算可知, 点$C$的坐标满足: 
+\[
+    x=\sigma-\text{tanh }\sigma\qquad
+    y=\text{sech }\sigma\qquad \sigma\in(0,\infty)
+\]
+也就是曳物线的方程. \marginpar{\footnotesize 我们可以发现, 双曲函数在曳物线的学习中是比较重要的, 同时楼老师也会在他的作业中布置和双曲函数有关的内容, 有兴趣的同学可以提前了解关于双曲函数求导运算的内容.}
+\subsection{伪球面}
+我们将在此处给出曳物线的方程: 
+\[
+    x=\sigma-\text{tanh }\sigma\qquad
+    y=\text{sech }\sigma\qquad \sigma\in(0,\infty)
+\]
+是在$xOy$平面上的曳物线方程, 通过对于$x$轴的旋转我们可以得到
+伪球面的方程, 伪球面$S_2$的方程是
+\[
+\begin{cases}
+x=\sigma-\text{tanh }\sigma\\
+
+y=\text{sech }\sigma\text{ cos }\theta\qquad \sigma>0,\theta\in[0,2\pi]\\
+
+z=\text{sech }\sigma\text{ sin }\theta
+\end{cases}
+\]
+伪球面的更多性质我们将在后续章节中进一步探讨, 当然后续会涉及一些十分复杂的计算, 
+所以在此处和它打好交道总是不错的选择. 
+\end{document}

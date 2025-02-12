@@ -13,6 +13,8 @@
 \newcommand{\dd}{\mathrm{d}}
 \titleformat{\chapter}{\Huge\bfseries}{\huge\bfseries 第\thechapter 章}{0pt}{\vskip 20pt}
 \renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\newcommand{\highlight}[2]{\colorbox{#1!17}{$#2$}}
+\usetikzlibrary{tikzmark,calc,intersections}
 \begin{document}
 \pagestyle{fancy}
 \maketitle
@@ -25,6 +27,7 @@
 \setcounter{page}{1}
 \subfile{ch01}
 \subfile{ch02}
+\subfile{ch03}
 \subfile{ch04}
 \subfile{ch05}
 \subfile{ch06}

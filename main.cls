@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{main}
 \LoadClass{book}
-\RequirePackage{amssymb,amsmath,amsthm}
+\RequirePackage{amssymb,amsmath,amsthm,mathtools,yhmath}
 \RequirePackage{hyperref}
 \RequirePackage{tikz,pgfplots}
 \RequirePackage{geometry}
