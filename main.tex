@@ -1,7 +1,7 @@
 \documentclass{main}
 \usepackage{subfiles}
-\title{\Huge\bfseries 经典王志超技巧}
-\author{Anthropos Anonumos}
+\title{\fontsize{40}{0}\bfseries 经典王志超技巧}
+\author{\Large\scshape Anthropos Anonumos}
 \date{}
 \setCJKmainfont[Path=./fonts/,ItalicFont=simkai,BoldFont=simhei]{simsun}
 \geometry{a4paper,scale=0.7,marginparwidth=3cm,headheight=10mm}
@@ -15,12 +15,12 @@
 \renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
 \newcommand{\highlight}[2]{\colorbox{#1!17}{$#2$}}
 \usetikzlibrary{tikzmark,calc,intersections}
-\newcommand{\prefacename}{前言}
-\newenvironment{preface}{
+\newenvironment{preface}[1][前言]{
+    \newpage
     \vspace*{\stretch{2}}
-    {\noindent \bfseries \Huge \prefacename}
+    {\noindent \bfseries \Huge #1}
     \begin{center}
-        \phantomsection \addcontentsline{toc}{chapter}{\prefacename}
+        \phantomsection \addcontentsline{toc}{chapter}{#1}
         \thispagestyle{plain}
     \end{center}
 
@@ -30,18 +30,20 @@
 \fancyhf{}
 \pagenumbering{Roman}
 \maketitle
+\begin{preface}[數學思想讚]
+混沌初開，太始生數。昔伏羲仰觀奎星圓曲之勢，俯察龜甲縱橫之紋，始作九九之術，此乃數術發軔之樞機。今有復旦八駿，振衣千仞之崗，濯足萬里之流，聚首論道，欲以青春之筆，續寫黃鐘大呂之章。
+
+觀其論學，宛若伯牙撫琴，嵇康鍛鐵。歐幾里得公理，如七絃泠泠，奏《陽春》《白雪》之曲；牛頓流數之術，似鐵砧星火，鑄天地運行之軌。昔張平子觀天制儀，能測候風地動；今諸生執籌推演，欲解黎曼度量。祖氏綴術，精算至圓率千分；笛氏坐標，妙合天圓地方之說。此非獨術數之精微，實乃古今智慧之弦歌互答。
+
+嘗聞《九章》分疇，劉徽注海；《周髀》測影，趙爽釋天。今諸子論學，每至月斜廊廡，猶聞爭鳴之聲：或辯高斯無窮之奧，或析歐拉定理之玄。猶記程門立雪，楊時求教之誠；更慕濂溪觀蓮，茂叔格物之明。諸生切磋，有若弈秋對局，落子皆含宇宙；恰似庖丁解牛，奏刀必中音律。
+
+昔者《易》云：「形而上者謂之道，形而下者謂之器。」數學之道，上通碧落，下貫黃泉。諸生今日所論，非止算籌之戲，實為探賾索隱之功。願效張騫鑿空，開闢數理新域；更期僧繇點睛，喚醒蟄龍騰淵。觀此討論班之設，不啻在杏壇弦誦，蘭亭修禊之間也。
+
+時逢元夜，又歷春秋。黃浦江頭，春潮暗湧；光華樓畔，桃李初芳。諸生勖哉！他日若遂凌雲志，莫忘今朝燈下，曾有少年擊節歌《九章》、撫掌論《幾何》之時也。
+
+是為序。
+\end{preface}
 \begin{preface}
-    混沌初开，太始生数。昔伏羲仰观奎星圆曲之势，俯察龟甲纵横之纹，始作九九之术，此乃数术发轫之枢机。今有复旦八骏，振衣千仞之岗，濯足万里之流，聚首论道，欲以青春之笔，续写黄钟大吕之章。
-
-观其论学，宛若伯牙抚琴，嵇康锻铁。欧几里得公理，如七弦泠泠，奏《阳春》《白雪》之曲；牛顿流数之术，似铁砧星火，铸天地运行之轨。昔张平子观天制仪，能测候风地动；今诸生执筹推演，欲解黎曼猜想。祖氏缀术，精算至圆率千分；笛氏坐标，妙合天圆地方之说。此非独术数之精微，实乃古今智慧之弦歌互答。
-
-尝闻《九章》分畴，刘徽注海；《周髀》测影，赵爽释天。今诸子论学，每至月斜廊庑，犹闻争鸣之声：或辩康托尔无穷之奥，或析庞加莱猜想之玄。犹记程门立雪，杨时求教之诚；更慕濂溪观莲，茂叔格物之明。诸生切磋，有若弈秋对局，落子皆含宇宙；恰似庖丁解牛，奏刀必中音律。
-
-昔者《易》云：“形而上者谓之道，形而下者谓之器。”数学之道，上通碧落，下贯黄泉。诸生今日所论，非止算筹之戏，实为探赜索隐之功。愿效张骞凿空，开辟数理新域；更期僧繇点睛，唤醒蛰龙腾渊。观此讨论班之设，不啻在杏坛弦诵，兰亭修禊之间也。
-
-时逢元夜，又历春秋。黄浦江头，春潮暗涌；光华楼畔，桃李初芳。诸生勖哉！他日若遂凌云志，莫忘今朝灯下，曾有少年击节歌《九章》、抚掌论《几何》之时也。
-
-是为序。
 \begin{flushright}
 编者
 
